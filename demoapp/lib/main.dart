@@ -1,3 +1,4 @@
+import 'package:demoapp/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
@@ -9,12 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Material(
-      child: Center(
-        child: Container(
-          child: Text('30 Days Flutter'),
-        ),
-      ),
-    ));
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
   }
 }
