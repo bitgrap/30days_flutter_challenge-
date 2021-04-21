@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:demoapp/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -7,37 +7,34 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset(
-                "assets/images/login_image.png",
-                fit: BoxFit.cover,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              "assets/images/login_image.png",
+              fit: BoxFit.cover,
+            ),
+            Text(
+              'Welcome',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                'Welcome',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+              child: Column(
+                children: [
+                  emailTextField(),
+                  passwordTextField(),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  loginButton(context),
+                ],
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                child: Column(
-                  children: [
-                    emailTextField(),
-                    passwordTextField(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    loginButton(),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -62,13 +59,15 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget loginButton() {
+  Widget loginButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        print("hi koishik"); 
+        Navigator.pushNamed(context, MyRoutes.homeRoute);
       },
       child: Text('Login'),
-      style: TextButton.styleFrom(),
+      style: TextButton.styleFrom(
+        minimumSize: Size(150, 40),
+      ),
     );
   }
 }
